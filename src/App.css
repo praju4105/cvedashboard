@@ -1,38 +1,217 @@
-.App {
+/* General Styling */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Header Styling */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to right, #fdc830, #f37335);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 12px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  height: 120px;
+  margin-left: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  flex-grow: 10;
+  text-transform: uppercase;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Search Input Styling */
+input {
+  width: 85%;
+  max-width: 450px;
+  padding: 12px;
+  margin: 20px auto;
+  display: block;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid Container */
+.grid-container {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  align-items: start;
+}
+
+/* Table Styling */
+.table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+th, td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: linear-gradient(to right, #ff9966, #ff5e62);
   color: white;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+td:nth-child(3) {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.description-cell {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.description-cell.expanded {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-y: auto;
+  max-height: 150px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  min-width: 260px;
+  max-width: 320px;
+}
+
+.sidebar h2 {
+  border-bottom: 2px solid #f37335;
+  padding-bottom: 6px;
+  font-size: 18px;
+}
+
+/* Footer Styling */
+.footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+  background: linear-gradient(to right, #fdc830, #f37335);
+  color: white;
+  border-radius: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid-container {
+      grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  .header {
+      flex-direction: column;
+      text-align: center;
   }
+
+  .logo {
+      margin-bottom: 10px;
+  }
+
+  table {
+      font-size: 13px;
+  }
+}
+/* Container for search input and buttons */
+.controls-container {
+    display: flex;              /* Enable flexbox layout */
+    justify-content: space-between; /* Push items to opposite ends (search left, buttons right) */
+    align-items: center;        /* Vertically align items in the middle */
+    margin-bottom: 20px;        /* Add some space below this control row */
+    flex-wrap: wrap;            /* Allow items to wrap onto the next line on small screens */
+    gap: 15px;                  /* Add space between items when they wrap */
+}
+
+/* Style the search input */
+.search-input {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    min-width: 200px; /* Adjust as needed */
+    flex-grow: 1;     /* Allow search input to take up available space */
+    max-width: 400px; /* Optional: Prevent search from getting too wide */
+}
+
+/* Group the download buttons */
+.button-group {
+    display: flex;      /* Use flexbox for buttons within the group */
+    gap: 10px;          /* Space between the two download buttons */
+    flex-shrink: 0;     /* Prevent the button group from shrinking */
+}
+
+/* Basic Style for the download buttons (keep or adapt your existing styles) */
+.download-button {
+    padding: 10px 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease-in-out;
+    white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+.download-button:hover {
+    background-color: #0056b3;
+}
+
+/* --- Optional: Responsive Adjustments --- */
+/* On smaller screens, you might want to stack them */
+@media (max-width: 600px) { /* Adjust breakpoint as needed */
+    .controls-container {
+        flex-direction: column; /* Stack search and buttons vertically */
+        align-items: stretch;   /* Make items take full width */
+    }
+
+    .search-input {
+       max-width: none;      /* Allow search to take full width */
+       margin-bottom: 10px; /* Add space below search when stacked */
+    }
+
+    .button-group {
+        justify-content: center; /* Center buttons when stacked */
+        width: 100%;           /* Make button group take full width */
+    }
 }
